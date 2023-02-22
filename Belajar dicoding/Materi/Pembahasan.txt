@@ -1,0 +1,157 @@
+STATE
+Sebelum membahas kedua jenis widget tersebut, kita harus berkenalan terlebih dahulu dengan istilah State. Kenapa demikian? Widget kita akan terus berurusan dengan State. Lalu apa itu State?
+Untuk teman-teman dengan background frontend web developer, tentu tak akan asing dengan istilah State ini, terutama menggunakan framework ReactJS. Tetapi untuk Anda tanpa background tersebut tidak perlu risau. State tidaklah sulit untuk dimengerti. Jadi State adalah data yang ada pada suatu widget. Widget menyimpan data yang nantinya dapat berubah sesuai interaksi pengguna.
+Karena Flutter menggunakan paradigma OOP (Object-Oriented Programming), state biasanya menjadi suatu properti dari sebuah class. 
+
+StatelessWidget
+Setelah mengenal apa itu state, maka yang pertama kita akan bahas adalah StatelessWidget. StatelessWidget adalah widget yang nilai state-nya tidak dapat berubah (immutable) maka widget tersebut lebih bersifat statis dan memiliki interaksi yang terbatas.
+
+StatefulWidget
+Kebalikan dari StatelessWidget, StatefulWidget ialah widget yang state-nya dapat berubah-ubah nilainya, yang berarti StatefulWidget bersifat dinamis dan memiliki interaksi yang tak terbatas.
+
+Widget - Widget Umum
+1. Scaffold merupakan sebuah widget yang digunakan untuk membuat tampilan dasar material design pada aplikasi Flutter, yang dapat disebut juga dasar sebuah halaman pada aplikasi Flutter. Scaffold memiliki 3 bagian yaitu AppBar, Body, dan FloatingActionButton.
+link pembahasan scaffold class => https://api.flutter.dev/flutter/material/Scaffold-class.html
+link pembahsan scaffold sample apps => https://flutter.dev/docs/catalog/samples/Scaffold
+	A. AppBar merupakan Header (bagian paling atas) aplikasi atau biasa dikenal dengan toolbar. Pada AppBar umumnya terdapat judul dan ActionButton.
+	B. body merupakan bagian utama dari Scaffold dan kita akan banyak menuliskan kode pada bagian body ini.
+	C. FloatingActionButton ini merupakan bagian dari Scaffold yang digunakan untuk menampilkan sebuah tombol aksi yang posisinya floating (melayang dan posisinya tetap). 
+
+2. Container adalah widget yang digunakan untuk melakukan styling, membuat sebuah shape (bentuk), dan layout pada widget child-nya. 
+link pembahasan container dari flutter => https://api.flutter.dev/flutter/widgets/Container-class.html
+	A. Di dalam container kita dapat mengatur width(lebar) dan height(tinggi). 
+	B. Container menyediakan padding & margin. Padding merupakan jarak antara konten (child) dengan Container, sedangkan margin merupakan jarak antara Container dengan bagian luar container.
+	C. Decoration merupakan bagian dari Container untuk styling. Pada decoration kita dapat menentukan warna background (solid/gradient color), shadow, border, border radius (membulatkan sudut), mengatur shape (bentuk), dan lain-lain.
+		a. Shape merupakan suatu fungsi untuk mengatur bentuk dari Container,
+		b. Shadow merupakan suatu fungsi untuk menambahkan bayangan.
+		c. Border merupakan batas garis dengan content (child).
+
+3. Padding merupakan sebuah widget khudus untuk memberikan padding pada suatu widget.
+link pembahasan Padding Class => https://api.flutter.dev/flutter/widgets/Padding-class.html
+	Contoh penggunaan widget Padding seperti berikut:
+
+	Padding(
+  	   padding: EdgeInsets.all(30),
+  	   child: Text('Ini Padding')
+	)
+
+4. Center merupakan sebuah widget yang digunakan untuk membuat suatu widget berada pada posisi tengah. Penggunaan widget Center sangatlah simpel, 
+	contoh penggunaan widget Center yakni seperti berikut:
+
+	Center(
+  	   child: Text('Text berada di tengah'),
+	)
+
+5. Row merupakan suatu widget yang digunakan untuk membuat widget-widget tersusun berjajar secara horizontal.
+link pembahasan Row Class => https://api.flutter.dev/flutter/widgets/Row-class.html
+link pembahasan Layouts in Flutter => https://flutter.dev/docs/development/ui/layout
+	A. Parameter mainAxisAlignment yang berfungsi untuk mengatur alignment vertikal dari Row (alignment utama). Selain itu Row juga memiliki parameter crossAxisAlignment yang berfungsi untuk mengatur alignment secara horizontal. Kedua parameter ini juga berlaku sebaliknya untuk widget Column.
+
+6. Column merupakan suatu widget yang digunakan untuk membuat widget-widget tersusun berjajar secara vertikal.
+link pembahasan Column Class => https://api.flutter.dev/flutter/widgets/Column-class.html
+	A. Parameter mainAxisAlignment yang berfungsi untuk mengatur alignment vertikal dari Row (alignment utama). Selain itu Row juga memiliki parameter crossAxisAlignment yang berfungsi untuk mengatur alignment secara horizontal. Kedua parameter ini juga berlaku sebaliknya untuk widget Column.
+
+7. Button merupakan sebuah widget yang dapat menerima trigger sentuhan atau dapat melakukan suatu fungsi ketika disentuh, widget-widget button tersebut antara lain:
+link pembahasan Button Material Components => https://flutter.dev/docs/development/ui/widgets/material#Buttons
+	A. ElevatedButton merupakan bagian dari Material Design widget dari Flutter.
+	link pembahasan ElevatedButton Class => https://api.flutter.dev/flutter/material/ElevatedButton-class.html
+	
+	B. TextButton merupakan widget button yang memiliki tampilan yang polos selayaknya Text. TextButton umumnya digunakan pada toolbars, dialog, atau bersama komponen button lain.
+	link pembahasan TextButton Class => https://api.flutter.dev/flutter/material/TextButton-class.html
+	
+	C. OutlinedButton merupakan bagian dari material design yang menyediakan tampilan TextButton dengan tambahan outline. OutlinedButton umumnya digunakan untuk tombol atau aksi yang penting, tetapi bukan aksi utama dalam aplikasi.
+	link pembahasan OutlinedButton => https://api.flutter.dev/flutter/material/OutlinedButton-class.html	
+
+	D. IconButton merupakan widget button dengan icon. Tak seperti widget tombol lainnya, widget IconButton ini tidak memiliki child.
+	link pembahasan IconButton Class => https://api.flutter.dev/flutter/material/IconButton-class.html
+	
+	E. DropdownButton merupakan tombol yang saat diklik, akan muncul pop-up daftar beberapa item yang dapat kita pilih salah satu. Dan hanya pada jenis button ini saja yang menggunakan StatefullWidget untuk menjalankannya.
+	link pembahasan DropdownButton Class=> https://api.flutter.dev/flutter/material/DropdownButton-class.html
+
+8. Input Widget merupakan salah satu bentuk interaksi dengan pengguna yaitu dengan menerima input. Ada beberapa input widget yang bisa digunakan supaya pengguna bisa berinteraksi dengan aplikasi. Perhatikan bahwa input pengguna ini berkaitan dengan state yang dapat sering berubah. Karena itu umumnya input widget akan ditempatkan di dalam StatefulWidget.
+link pembahasan Input and selections widgets => https://flutter.dev/docs/development/ui/widgets/material#Input%20and%20selections
+	A. TextField merupakan sebuah widget yang digunakan untuk menerima input berupa teks yang berasal dari keyboard. Terdapat beberapa cara yang bisa Anda gunakan untuk mendapatkan nilai dari TextField. Salah satunya adalah melalui parameter onChanged. Parameter onChanged berisi sebuah fungsi yang akan dipanggil setiap terjadi perubahan inputan pada TextField. Pada fungsi ini, kita dapat mengubah nilai variabel state dengan memanggil fungsi setState().
+	Jika Anda tidak ingin mengambil nilai setiap perubahan, tetapi hanya ketika seluruh input sudah selesai di-submit, Anda dapat menggunakan parameter onSubmitted. Cara lain yang bisa kita gunakan adalah dengan TextEditingController. Dengan controller, kita cukup membuat variabel TextEditingController lalu menambahkannya ke widget TextField.
+	link pembahasan TextField Class => https://api.flutter.dev/flutter/material/TextField-class.html
+
+	B. Switch merupakan inputan yang mengembalikan nilai boolean true atau false. Pada contoh tersebut value dari Switch berupa boolean di mana ketika boolean tersebut false maka Switch akan berada pada posisi nonaktif. Switch umumnya digunakan sebagai konfigurasi on/off pada halaman setting.
+	link pembahasan Switch Class => https://api.flutter.dev/flutter/material/Switch-class.html
+
+	C. Radio merupakan inputan yang digunakan untuk memilih salah satu dari beberapa pilihan dalam suatu kelompok. Pada contoh tersebut terdapat variable language yang digunakan pada groupValue tiap Radio. Language inilah yang menyimpan nilai Radio yang dipilih. Nilainya akan berubah ketika fungsi onChanged terpanggil.
+	link pembahasan Radio Class => https://api.flutter.dev/flutter/material/Radio-class.html
+
+	D. Checkbox merupakan inputan benar atau salah. Checkbox akan berisi centang jika nilainya adalah benar dan kosong jika salah.
+	link pembahasan CheckBox Class => https://api.flutter.dev/flutter/material/Checkbox-class.html
+
+9. Image => Dalam pengembangan suatu aplikasi kita tidak akan lepas dari image atau gambar untuk membuat tampilan semakin menarik. Pada materi kali ini kita akan belajar bagaimana menampilkan gambar dari internet dan project asset.
+link pembahasan Image Class => https://api.flutter.dev/flutter/widgets/Image-class.html
+	A. Image.network Untuk menampilkan gambar yang bersumber dari internet, kita akan menggunakan method Image.network, lalu pada widget ini bisa diberi lebar dan tinggi juga. 
+	Cara penulisan method ini sebagai berikut:
+	
+	Image.network(url)
+
+	B. Selain melalui internet, kita juga dapat menampilkan gambar yang bersumber dari asset project.. Asset di sini berupa gambar-gambar yang nantinya didaftarkan pada project. Untuk mendaftarkan asset gambar pada project kita harus menambahkannya pada berkas pubspec.yaml.
+	Pertama kita harus menambahkan terlebih dahulu gambar yang akan didaftarkan ke dalam folder project kita. Saat ini Flutter mendukung beberapa jenis format gambar, seperti JPEG, PNG, GIF, Animated GIF, WebP, Animated WebP, BMP, dan WBMP. Di luar format tersebut, Flutter akan memanfaatkan API dari masing-masing platform. Jika platform native mendukung format gambar yang digunakan, maka gambar tersebut akan bisa di-render oleh Flutter.
+
+10. Font => untuk menggunakan font sama dengan menggunakan Image.asset, pertama kita download dulu fontnya di link ini (https://fonts.google.com/) setelah itu buat folder di project kita dan masukkan fontnya, setelah itu daftarkan font kita di dalam file pubspec.yaml dan klik pub get.
+
+11. ListView merupakan Widget yang digunakan untuk menampilkan beberapa item dalam bentuk baris atau kolom dan bisa di-scroll. Cara penggunaan ListView ini mirip dengan Column atau Row di mana Anda memasukkan widget yang ingin disusun sebagai children dari ListView.
+link pembahasan ListView Class => https://api.flutter.dev/flutter/widgets/ListView-class.html
+
+12. Expanded & Flexible
+Sejauh ini kita telah mempelajari beberapa widget dasar dan bagaimana menyusunnya secara horizontal maupun vertikal. Dalam pengembangan aplikasi mobile kita tahu bahwa terdapat banyak sekali perangkat dengan ukuran layar yang berbeda pula. Untuk itu penting bagi kita untuk bisa menyusun tampilan yang responsif terhadap ukuran layar.
+	A. Expanded
+	Flutter memiliki widget Expanded yang dapat mengembangkan child dari Row atau Column sesuai dengan ruang yang tersedia. Cara menggunakannya Anda cukup membungkus masing-masing child ke dalam Expanded. Saat aplikasi dijalankan, masing-masing container akan menempati ruang kosong yang ada. Jika Anda menjalankan di ukuran layar yang berbeda, maka ukuran container juga akan menyesuaikan. Expanded memiliki parameter flex yang memiliki nilai default yaitu 1, jadi jika ingin mengubah maka bisa menambahkan (flex : 2,) pada salah satu container.
+	link pembahasan Expanded Class => https://api.flutter.dev/flutter/widgets/Expanded-class.html
+
+	B. Flexible
+	Sama seperti Expanded, widget Flexible digunakan untuk mengatur ukuran widget di dalam Row atau Column secara fleksibel. Perbedaan Flexible dan Expanded adalah widget Flexible memungkinkan child widget-nya berukuran lebih kecil dibandingkan ukuran ruang yang tersisa. Sementara, child widget dari Expanded harus menempati ruang yang tersisa dari Column atau Row.
+	link pembahasan Flexible Class => https://api.flutter.dev/flutter/widgets/Flexible-class.html
+
+13. Navigation
+link pembahasan Navigation Cookbook => https://flutter.dev/docs/cookbook/navigation
+Perlu kita ketahui bahwa konsep navigasi pada Flutter mirip sekali dengan pemrograman Android, yakni bahwa ketika berpindah screen/activity akan menjadi tumpukan (stack). Jadi ketika berpindah dari satu screen ke screen lain (push), maka screen pertama akan ditumpuk oleh screen kedua. Kemudian apabila kembali dari screen kedua ke pertama, maka screen kedua akan dihapus (pop).
+	A. Navigator.push
+	Untuk berpindah ke screen kedua kita akan menggunakan sebuah method Navigator.push, method tersebut ditulis seperti berikut:
+
+	Navigator.push(context, MaterialPageRoute(builder: (context) {
+   	   return WidgetScreen();
+	}));
+
+	Pada kode di atas Navigator.push memiliki dua parameter. Pertama ialah context dan yang kedua Route. Parameter context ini merupakan variabel BuildContext yang ada pada method build. Parameter route berguna untuk menentukan tujuan ke mana kita akan berpindah screen. Route tersebut kita isikan dengan MaterialPageRoute yang di dalamnya terdapat builder yang nantinya akan diisi dengan tujuan screen-nya.	
+
+	B. Navigator.pop
+	Setelah dapat berpindah ke screen lain maka kita akan belajar menggunakan Navigator.pop untuk kembali ke screen sebelumnya. Penulisan Navigator.pop seperti berikut.
+
+	Navigator.pop(context)
+	
+	Pada Navigator.pop kita hanya cukup menambahkan parameter context yang merupakan variabel dari method build.
+	Untuk kembali dari screen kedua kita dapat menambahkan event onPressed pada OutlinedButton yang ada pada screen kedua dan kita masukkan Navigator.pop pada event,
+
+14. Responsive Layout
+Seperti yang kita tahu, Flutter merupakan framework untuk mengembangkan aplikasi pada berbagai platform. Pada platform mobile sendiri tersedia banyak ukuran layar dari ukuran jam hingga tablet. Ditambah Flutter baru saja mengumumkan dukungan untuk platform web dan desktop. Itu artinya, satu hal yang penting untuk kita pahami adalah bagaimana menerapkan layout yang mampu beradaptasi dengan berbagai ukuran layar yang berbeda.
+Pada materi ini kita akan mulai membahas bagaimana mengimplementasikan layout yang responsif.
+	A. MediaQuery
+	MediaQuery adalah kelas yang dapat kita gunakan untuk mendapatkan ukuran dan juga orientasi layar.
+
+	B. LayoutBuilder
+	Cara lain yang bisa kita gunakan adalah dengan widget LayoutBuilder. Perbedaan umum antara MediaQuery dan Layout Builder adalah MediaQuery akan mengembalikan ukuran layar yang digunakan, sedangkan LayoutBuilder mengembalikan ukuran maksimum dari widget tertentu.
+
+15. Hero Animation
+link pembahasan Hero Animation => https://www.dicoding.com/blog/menerapkan-animasi-pada-project-flutter/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
